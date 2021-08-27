@@ -19,6 +19,7 @@ function formValidate(){
     
     if(name.value.length <8 || name.value.length >15){
         errorname.innerText="atleast 8 to 15 characters reqired"
+        name.focus();
        return false
     }
     else{
@@ -27,6 +28,7 @@ function formValidate(){
     }
     if(address.value == ''){
         erroraddress.innerText='kindly fill address field'
+        address.focus();
         return false
         
     }
@@ -35,42 +37,51 @@ function formValidate(){
     }
     if (email.value == ''){
         erroremail.innerText='fill the email id'
+        email.focus();
         return false
         
     }
-    else if(/[a-zA-Z0-9&_@+5.com$]/.test(email.value)){
+    else if(/^([a-zA-Z0-9\.-]+)@([a-zA-Z0-9-]+).([a-z]+)(.[a-z]+)?$/.test(email.value)){
         erroremail.innerText=''
         
     
     }
     else{
         erroremail.innerText= 'Enter valid Email'
+        email.focus();
+    return false;
         
     }
     if(password.value == ''){
         errorpassword.innerText=' enter your  password'
+       password.focus();
         return false
         
     }
-    else if(/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,14}$/.test(password.value)){
+    else if(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$/.test(password.value)){
         errorpassword.innerText=''
     }
     else{
         errorpassword.innerText='Plese fill password in corrct pattern'
+        errorpassword.focus();
+    return false;
+        
     }
     if(cpassword.value == password.value){
         errorcpassword.innerText=''
+        cpassword.focus()
         return false
         
     }
-    else{errorcpassword.innerText='Entered password is not same'}
+    else{errorcpassword.innerText='Entered password is not same'
+        }
     
     if(phone.value == ''){
         errorphone.innerText='phone no cannot be blank'
         return false
        
     }
-    else if(/^[0-9]{1,10}$/.test(phone.value)){
+    else if(/^[6-9]\d{9}/.test(phone.value)){
         errorphone.innerText=''
     }
     else{
